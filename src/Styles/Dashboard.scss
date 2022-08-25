@@ -1,0 +1,84 @@
+   @import "./Variable";
+.das__cards {
+  display: flex;
+  width: 96%;
+  margin: auto;
+}
+.dahsbord {
+  margin-left: 16rem;
+//   height: 90vh;
+  background-color: #f8f9fa;
+  .dash__heading {
+    color: $font-color;
+    padding: 20px;
+    font-size: 1rem;
+  }
+  .das__card {
+    width: 250px;
+    height: 180px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px gray;
+    position: relative;
+    overflow: hidden;
+    .das_small_circle {
+      content: "";
+      position: absolute;
+      display: block;
+      right: -40px;
+      top: 40px;
+      width: 80px;
+      height: 80px;
+      background-color: #6710f241;
+      border-radius: 50%;
+    }
+    .das_big_circle{
+      content: "";
+      position: absolute;
+      display: block;
+      right: -30px;
+      top: -30px;
+      width: 120px;
+      height: 120px;
+      background-color: #6710f260;
+      border-radius: 50%;
+    }
+  }
+}
+.das_card_heading {
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $font-color;
+}
+.das__card_number {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  color: rgb(56, 56, 56);
+  .das__card_count {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+}
+.das__card_description {
+  width: 90%;
+  margin: auto;
+  padding-top: 20px;
+  font-size: 15px;
+  line-height: 1rem;
+  color: gray;
+}
+.das__card_arrow {
+    color: #28A745;
+  .des__card_inc {
+    font-size: 13px;
+    color: #28A745;
+  }
+}
+
+// .das__chart{
+
+// }

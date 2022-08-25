@@ -1,0 +1,67 @@
+@use "../Variable";
+$font-size: 15px;
+$font-color: rgb(75, 75, 75);
+$font-link-size: 14px;
+$link-Bgcolor: #ae69f5;
+.admin__nav {
+  @include Variable.flex(space-between, center);
+  position: relative;
+  box-shadow: 0px 2px 4px gray;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.admin__logo {
+  margin: 0 0.5rem;
+}
+.admin__links{
+  // border: 1px solid rgb(0, 0, 0);
+  position: absolute;
+  top: 5rem;
+}
+.admin__link {
+  // border: 1px solid gray;
+  box-shadow: 1px 1px 2px gray;
+  border-radius: 3px;
+  width: 15rem;
+  padding: .5rem 0;
+  margin: .2rem 0;
+  @include Variable.flex(flex-start, center);
+  // flex-d
+  color: $font-color;
+  &:hover {
+    color: $link-Bgcolor;
+    cursor: pointer;
+  }
+  font-size: $font-link-size;
+  .admin__link_icon {
+    margin: 0 10px;
+  }
+  position: relative;
+  .admin_link_dropdown{
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+  }
+}
+
+.admin__UserIcon {
+  @include Variable.flex(center, center);
+  margin-right: 1rem;
+  .admin__biller {
+    @include Variable.flex(center, center);
+    font-size: $font-size;
+    .adimin__logo {
+      color: $font-color;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 2px;
+      background-color: rgb(190, 190, 190);
+    }
+    p {
+      color: $font-color;
+    }
+  }
+}

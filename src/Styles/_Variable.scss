@@ -1,0 +1,7 @@
+
+$font-color: rgb(75, 75, 75);
+@mixin flex($justify, $item) {
+    display: flex;
+    align-items: $item;
+    justify-content: $justify;
+}
