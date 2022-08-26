@@ -1,6 +1,7 @@
 import React from "react";
 import { DasCard } from "../components/Navigation/DashboardComponents/DasCard";
 import DasChart from "../components/Navigation/DashboardComponents/DasChart";
+import { DasTransiction } from "../components/Navigation/DashboardComponents/DasTransiction";
 import "../Styles/Dashboard.scss";
 
 const Dashbord = () => {
@@ -11,6 +12,7 @@ const Dashbord = () => {
       </div>
       <DasCard />
       <DasChart />
+      <DasTransiction />
     </div>
   );
 };
