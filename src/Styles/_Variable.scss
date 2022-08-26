@@ -1,5 +1,6 @@
-
+$link-Bgcolor: #ae69f5;
 $font-color: rgb(75, 75, 75);
+$tab: 576px;
 @mixin flex($justify, $item) {
     display: flex;
     align-items: $item;

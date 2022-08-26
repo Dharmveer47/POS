@@ -1,6 +1,6 @@
 import React from "react";
 import { DasCard } from "../components/Navigation/DashboardComponents/DasCard";
-import  DasChart  from "../components/Navigation/DashboardComponents/DasChart";
+import DasChart from "../components/Navigation/DashboardComponents/DasChart";
 import "../Styles/Dashboard.scss";
 
 const Dashbord = () => {
@@ -9,9 +9,7 @@ const Dashbord = () => {
       <div className="dash__heading">
         <h1>Dashboard</h1>
       </div>
-      <div className="dashboard__content">
-        <DasCard />
-      </div>
+      <DasCard />
       <DasChart />
     </div>
   );

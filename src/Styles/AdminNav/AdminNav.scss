@@ -65,3 +65,20 @@ $link-Bgcolor: #ae69f5;
     }
   }
 }
+.admin_dropdown{
+  position: absolute;
+  top: 2rem;
+  background-color: #fff;
+  box-shadow: 1px 0px 5px gray;
+  border-radius: 5px;
+  z-index: 10;
+  width: 100%;
+  li{
+    margin: .2rem 0;
+    padding: .5rem 0;
+    text-align: center;
+    &:hover{
+      background-color: rgb(230, 230, 230);
+    }
+  }
+}
