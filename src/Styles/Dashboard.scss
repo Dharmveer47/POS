@@ -4,8 +4,9 @@
   flex-wrap: nowrap;
   // width: 97%;
   margin: auto;
-  @media screen and (max-width: $tab) {
+  @media screen and (max-width: 1256px) {
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 .dahsbord {
@@ -94,6 +95,10 @@
   width: min-content;
   margin-top: 20px;
   padding: 1rem;
+  @media screen and (max-width: 1256px) {
+    position: relative;
+    overflow: auto;
+  }
 }
 
 .das__chart_heading {
@@ -105,7 +110,7 @@
 
 .das__chart_detail {
   display: flex;
-  @media screen and (max-width: 968px) {
+  @media screen and (max-width: 1256px) {
     flex-wrap: wrap;
   }
 }
@@ -119,6 +124,7 @@
   padding: 1rem 1rem;
   .das__last_update_detail {
     @include flex(flex-start, center);
+
     // border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
@@ -155,6 +161,13 @@
       font-size: 10px;
     }
   }
+  @media screen and (max-width: 1256px) {
+    display: flex;
+    flex-wrap: wrap;
+    .das__last_update_detail {
+      width: 12rem;
+    }
+  }
 }
 .das__trasn_table {
   width: 100%;
@@ -168,7 +181,7 @@
     margin-top: 2rem;
     color: $font-color;
     // border: 1px solid gray;
-    thead {
+    td {
       border: 1px solid rgba(128, 128, 128, 0.678);
       width: 100%;
       text-align: center;
@@ -181,20 +194,29 @@
     @include flex(center, center);
     text-align: center;
     color: $font-color;
+    border: 1px solid rgba(128, 128, 128, 0.356);
     td {
       width: 100%;
-      border: 1px solid rgba(128, 128, 128, 0.356);
       margin: auto;
       padding: 0.6rem 0;
       font-size: 0.9rem;
     }
+    .das__trans_icon {
+      :nth-child(1),:nth-child(2){
+        cursor: pointer;
+        margin: 2px;
+        &:hover{
+          color: gray;
+        }
+      }
+    }
   }
 }
-.das__pagination{
+.das__pagination {
   margin-top: 1rem;
-  @include flex(flex-start,center);
-  .das__pag_btn{
-    padding: .3rem 1rem;
-    margin: 0 .4rem;
+  @include flex(flex-start, center);
+  .das__pag_btn {
+    padding: 0.3rem 1rem;
+    margin: 0 0.4rem;
   }
 }

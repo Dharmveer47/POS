@@ -1,6 +1,6 @@
 import React from "react";
 import { DasLastupdate } from "./DasLastupdate";
-import { Heading } from "../../Heading";
+import { Heading } from "../Heading";
 import {
   LineChart,
   Line,

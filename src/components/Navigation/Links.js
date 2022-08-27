@@ -1,38 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { BiHomeAlt } from "react-icons/bi";
 import { BsBagCheckFill } from "react-icons/bs";
 import { AiOutlineBarChart } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { MdOutlineCardMembership } from "react-icons/md";
+import { MemberDropDown } from "./members/MemberDropDown";
 
 export const Links = () => {
   return (
     <div className="admin__links">
-      <SingleLink icon={<BiHomeAlt />} linkName="Dashboard" />
+      <DashbordLink />
+      <MemberProduct />
       <SalesOrder />
       <Reports />
     </div>
   );
 };
 
-const SingleLink = ({ drop, icon, linkName }) => {
+const DashbordLink = () => {
   return (
-    <div className="admin__link">
-      <div className="admin__link_icon">{icon}</div>
-      <div className="admin__linkname">{linkName}</div>
-      {drop && (
-        <div className="admin_link_dropdown">
-          <RiArrowDropDownLine />
+    <NavLink to={"/"}>
+      <div className="admin__link">
+        <div className="admin__link_icon">
+          <BiHomeAlt />
         </div>
-      )}
+        <div className="admin__linkname">Dashboard</div>
+      </div>
+    </NavLink>
+  );
+};
+
+const MemberProduct = () => {
+  const [dropdown, setDropdown] = useState(false);
+  return (
+    <div
+      className="admin__link"
+      onMouseEnter={() => setDropdown((e) => !e)}
+      onMouseLeave={() => setDropdown((e) => !e)}
+    >
+      <div className="admin__link_icon">
+        <MdOutlineCardMembership />
+      </div>
+      <div className="admin__linkname">Member Product Request</div>
+      <div className="admin_link_dropdown">
+        <RiArrowDropDownLine />
+      </div>
+      {dropdown && <MemberDropDown />}
     </div>
   );
 };
 
-const Reports = ({ icon, linkName }) => {
-  const [dropdown, setDropdown] = React.useState(false);
+const Reports = () => {
+  const [dropdown, setDropdown] = useState(false);
   return (
-    <div className="admin__link" 
-     onMouseEnter={() => setDropdown((e) => !e)}
+    <div
+      className="admin__link"
+      onMouseEnter={() => setDropdown((e) => !e)}
       onMouseLeave={() => setDropdown((e) => !e)}
     >
       <div className="admin__link_icon">
@@ -53,7 +77,7 @@ const Reports = ({ icon, linkName }) => {
 };
 
 const SalesOrder = () => {
-  const [dropdown, setDropdown] = React.useState(false);
+  const [dropdown, setDropdown] = useState(false);
   return (
     <div
       className="admin__link"

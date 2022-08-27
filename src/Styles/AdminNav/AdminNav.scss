@@ -16,31 +16,29 @@ $link-Bgcolor: #ae69f5;
 .admin__logo {
   margin: 0 0.5rem;
 }
-.admin__links{
+.admin__links {
   // border: 1px solid rgb(0, 0, 0);
   position: absolute;
   top: 5rem;
+  left: 0.5rem;
+  color: $font-color;
 }
 .admin__link {
   // border: 1px solid gray;
   box-shadow: 1px 1px 2px gray;
   border-radius: 3px;
   width: 15rem;
-  padding: .5rem 0;
-  margin: .2rem 0;
+  padding: 0.5rem 0;
+  margin: 0.2rem 0;
   @include Variable.flex(flex-start, center);
   // flex-d
-  color: $font-color;
-  &:hover {
-    color: $link-Bgcolor;
-    cursor: pointer;
-  }
+
   font-size: $font-link-size;
   .admin__link_icon {
     margin: 0 10px;
   }
   position: relative;
-  .admin_link_dropdown{
+  .admin_link_dropdown {
     position: absolute;
     right: 10px;
     font-size: 20px;
@@ -65,7 +63,7 @@ $link-Bgcolor: #ae69f5;
     }
   }
 }
-.admin_dropdown{
+.admin_dropdown {
   position: absolute;
   top: 2rem;
   background-color: #fff;
@@ -73,12 +71,15 @@ $link-Bgcolor: #ae69f5;
   border-radius: 5px;
   z-index: 10;
   width: 100%;
-  li{
-    margin: .2rem 0;
-    padding: .5rem 0;
-    text-align: center;
-    &:hover{
+  li {
+    margin: 0.2rem 0;
+    padding: 0.5rem 0;
+    padding-left: 10px;
+    // text-align: center;
+    &:hover {
       background-color: rgb(230, 230, 230);
+      color: $link-Bgcolor;
+      cursor: pointer;
     }
   }
 }

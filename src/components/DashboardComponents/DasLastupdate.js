@@ -1,7 +1,7 @@
 import React from "react";
 import { BsFillLightningChargeFill } from "react-icons/bs";
 import { GiNetworkBars } from "react-icons/gi";
-import { Heading } from "../../Heading";
+import { Heading } from "../Heading";
 export const DasLastupdate = () => {
   return (
     <div className="das__last_update">

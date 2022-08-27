@@ -1,19 +1,20 @@
 import React from "react";
-import { DasCard } from "../components/Navigation/DashboardComponents/DasCard";
-import DasChart from "../components/Navigation/DashboardComponents/DasChart";
-import { DasTransiction } from "../components/Navigation/DashboardComponents/DasTransiction";
+import { DasCard } from "../components/DashboardComponents/DasCard";
+import DasChart from "../components/DashboardComponents/DasChart";
+import { DasTransiction } from "../components/DashboardComponents/DasTransiction";
+import { DashThem } from "../components/Thems";
 import "../Styles/Dashboard.scss";
 
 const Dashbord = () => {
   return (
-    <div className="dahsbord">
+    <DashThem>
       <div className="dash__heading">
         <h1>Dashboard</h1>
       </div>
       <DasCard />
       <DasChart />
       <DasTransiction />
-    </div>
+    </DashThem>
   );
 };
 
