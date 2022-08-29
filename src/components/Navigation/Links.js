@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+
 import { BiHomeAlt } from "react-icons/bi";
 import { BsBagCheckFill } from "react-icons/bs";
 import { AiOutlineBarChart } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { MdOutlineCardMembership } from "react-icons/md";
 import { MemberDropDown } from "./members/MemberDropDown";
+// Redux
+import {
+  setnNavHide,
+  POS_CONTROLLER_INITIAL_STATE,
+} from "../../Store/dataSlice";
+
+import { useDispatch } from "react-redux";
+
+import { NAVIGATION_LINKS } from "../../App";
 
 export const Links = () => {
   return (
@@ -77,7 +87,10 @@ const Reports = () => {
 };
 
 const SalesOrder = () => {
+  const dispatch = useDispatch();
+  
   const [dropdown, setDropdown] = useState(false);
+
   return (
     <div
       className="admin__link"
@@ -93,7 +106,16 @@ const SalesOrder = () => {
       </div>
       {dropdown && (
         <ul className="admin_dropdown">
-          <li>POS</li>
+          <NavLink
+            to={NAVIGATION_LINKS.POINT_OF_SALES}
+            onClick={() => {
+              dispatch(
+                setnNavHide({ [POS_CONTROLLER_INITIAL_STATE.NAV_HIDE]: true })
+              );
+            }}
+          >
+            <li>POS</li>
+          </NavLink>
         </ul>
       )}
     </div>
