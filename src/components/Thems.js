@@ -36,3 +36,7 @@ export const Search = ({ setData }) => {
     </>
   );
 };
+//  For Pos only
+export const PosThem = ({ children, className }) => {
+  return <div className={`${className} pos__them`}>{children}</div>;
+};

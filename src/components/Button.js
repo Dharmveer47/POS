@@ -15,3 +15,7 @@ export const Button = ({ bName = "", onClick, bg = "#AE69F5" }) => {
     </>
   );
 };
+
+export const PosListButton = ({bName=""}) => {
+  return <button className="product__previous">{bName}</button>;
+};

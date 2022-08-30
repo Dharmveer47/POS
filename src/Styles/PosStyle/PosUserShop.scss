@@ -1,0 +1,32 @@
+@use "../Variable";
+.pos__user_info {
+  @include Variable.flex(initial, center);
+  .pos__user_logo {
+    @include Variable.flex(center, center);
+    background-color: #ae69f5;
+    width: 5rem;
+    height: 5rem;
+    margin: 0.5rem;
+    border-radius: 0.2rem;
+  }
+  .pos__user_detai {
+    h1 {
+      font-size: 1rem;
+      font-weight: bold;
+      color: rgb(39, 39, 39);
+    }
+    p {
+      font-size: 0.8rem;
+      margin: 0.5rem 0;
+    }
+  }
+}
+.pos__single_iteam {
+  @include Variable.flex(space-between, center);
+  width: 90%;
+  margin: auto;
+  line-height: 1.5rem;
+}
+.pos__pay_with {
+  @include Variable.flex(center, center);
+}

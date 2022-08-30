@@ -1,0 +1,83 @@
+@use "../Variable";
+.pos__select_prod {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+.pos__input_and_name {
+  @include Variable.flex(initial, center);
+  height: 2rem;
+  .pos__name {
+    @include Variable.flex(initial, center);
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+  }
+  input {
+    padding: 5px 11px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 0.2rem;
+    width: 50%;
+    outline: none;
+  }
+}
+.pos__select_product_table {
+  margin: 1rem 0rem;
+  ul {
+    @include Variable.flex(space-between, center);
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: gray;
+  }
+}
+
+.pos__select_product_btn {
+  @include Variable.flex(space-between, center);
+  width: 10rem;
+  button {
+    margin: 0.5rem;
+    background-color: #dc3545;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 8px 20px;
+    @include Variable.flex(space-between, center);
+    p {
+      color: #fff;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    svg {
+      margin-right: 0.5rem;
+      fill: #fff;
+    }
+    transition: all ease 0.2s;
+    &:hover {
+      box-shadow: 2px 2px 5px gray;
+    }
+  }
+}
+.pos__select_product_btn_single {
+  margin: 0.5rem;
+  background-color: #dc3545;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 8px 20px;
+  @include Variable.flex(space-between, center);
+  > div {
+    @include Variable.flex(space-between, center);
+  }
+  p {
+    color: #fff;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  svg {
+    margin-right: 0.5rem;
+    fill: #fff;
+  }
+  transition: all ease 0.2s;
+  &:hover {
+    box-shadow: 2px 2px 5px gray;
+  }
+}

@@ -1,0 +1,47 @@
+@use "../Variable";
+// .pos__product {
+//   //   border: 1px solid red;
+ 
+//   height: 85vh;
+// //   width: 30rem;        
+// }
+.product__navigation {
+  @include Variable.flex(space-between, center);
+  width: 90%;
+  margin: auto;
+  .product__filter {
+    @include Variable.flex(space-between, center);
+    border: 1px solid gray;
+    margin: 0.1rem 0.3rem;
+    padding: 0.1rem 0.3rem;
+    width: 9rem;
+    border-radius: 5px;
+  }
+}
+.product__pagination {
+  .product__counter {
+    font-size: 0.8rem;
+  }
+}
+.product_lists {
+    @include Variable.flex(center, center);
+    flex-wrap: wrap;
+  .product__single {
+    box-shadow: 0px 0px 5px gray;
+    margin: .5rem;
+    width: 5rem;
+    height: 6rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    > div img {
+        width: 5rem;
+        height: 4.5rem;
+        border-radius: .5rem;
+    }
+    .product__name{
+        font-size: .8rem;
+        text-align: center;
+        margin-top: .2rem;
+    }
+  }
+}

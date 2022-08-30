@@ -6,6 +6,7 @@ $color: #ae69f5;
   @include Variable.flex(space-between, center);
   padding: 0 1rem;
   box-shadow: 3px 3px 10px gray;
+  background-color: #fff;
 }
 
 .pos__logo {
