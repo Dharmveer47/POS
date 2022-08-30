@@ -5,7 +5,7 @@ import Dashbord from "./Pages/Dashbord";
 import StoreView from "./Pages/StoreView";
 import { ProductRequest } from "./components/MemberProduct/ProductRequest";
 // POS
-import PointOfSale from "./Pages/POS/PointOfSale";
+// import PointOfSale from "./Pages/POS/PointOfSale";
 // redux
 import { Provider } from "react-redux";
 import { store } from "./Store/store";
@@ -34,10 +34,10 @@ function App() {
               element={<ProductRequest />}
             />
             <Route path={NAVIGATION_LINKS.STORE_VIEW} element={<StoreView />} />
-            <Route
+            {/* <Route
               path={NAVIGATION_LINKS.POINT_OF_SALES}
               element={<PointOfSale />}
-            />
+            /> */}
           </Routes>
         </BrowserRouter>
       </Provider>

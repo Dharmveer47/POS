@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-
 import { BiHomeAlt } from "react-icons/bi";
 import { BsBagCheckFill } from "react-icons/bs";
 import { AiOutlineBarChart } from "react-icons/ai";
@@ -15,7 +13,7 @@ import {
 
 import { useDispatch } from "react-redux";
 
-import { NAVIGATION_LINKS } from "../../App";
+// import { NAVIGATION_LINKS } from "../../App";
 
 export const Links = () => {
   return (
@@ -30,14 +28,14 @@ export const Links = () => {
 
 const DashbordLink = () => {
   return (
-    <NavLink to={"/"}>
+    <div >
       <div className="admin__link">
         <div className="admin__link_icon">
           <BiHomeAlt />
         </div>
         <div className="admin__linkname">Dashboard</div>
       </div>
-    </NavLink>
+    </div>
   );
 };
 
@@ -106,8 +104,8 @@ const SalesOrder = () => {
       </div>
       {dropdown && (
         <ul className="admin_dropdown">
-          <NavLink
-            to={NAVIGATION_LINKS.POINT_OF_SALES}
+          <div
+            // to={NAVIGATION_LINKS.POINT_OF_SALES}
             onClick={() => {
               dispatch(
                 setnNavHide({ [POS_CONTROLLER_INITIAL_STATE.NAV_HIDE]: true })
@@ -115,7 +113,7 @@ const SalesOrder = () => {
             }}
           >
             <li>POS</li>
-          </NavLink>
+          </div>
         </ul>
       )}
     </div>

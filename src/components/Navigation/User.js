@@ -1,8 +1,8 @@
 import React from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { Button } from "../Button";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
 import {
   setnNavHide,
   POS_CONTROLLER_INITIAL_STATE,
@@ -10,7 +10,6 @@ import {
 
 export const User = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   return (
     <div className="admin__UserIcon">
       <Button
@@ -19,7 +18,6 @@ export const User = () => {
           dispatch(
             setnNavHide({ [POS_CONTROLLER_INITIAL_STATE.NAV_HIDE]: true })
           );
-          navigate("/pointOfSale")
         }}
       />
       <div className="admin__biller">

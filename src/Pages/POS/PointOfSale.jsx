@@ -1,12 +1,11 @@
 import React from "react";
-import { DashThem } from "../../components/Thems";
 
 const PointOfSale = () => {
   return (
     <>
-      <DashThem>
+      <div>
         <div>PointOfSale</div>
-      </DashThem>
+      </div>
     </>
   );
 };
