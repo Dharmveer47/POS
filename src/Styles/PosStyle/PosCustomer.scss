@@ -9,7 +9,7 @@
 .pos__choose_customer {
   @include Variable.flex(initial, center);
   .pos__choose_heading {
-    margin: 0.3rem 0.1rem;
+    margin: 0.5rem 0.1rem;
     font-size: 0.9rem;
   }
   svg {
