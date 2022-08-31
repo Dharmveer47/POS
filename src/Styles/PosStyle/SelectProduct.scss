@@ -5,6 +5,8 @@
 }
 .pos__input_and_name {
   @include Variable.flex(initial, center);
+  border: 1px solid gray;
+  border-radius: 0.2rem;
   height: 2rem;
   .pos__name {
     @include Variable.flex(initial, center);
@@ -14,14 +16,15 @@
   input {
     padding: 5px 11px;
     border: none;
-    border: 1px solid gray;
-    border-radius: 0.2rem;
-    width: 50%;
+    border: none;
+    border-left: 1px solid gray;
+    width: 100%;
     outline: none;
   }
 }
 .pos__select_product_table {
   margin: 1rem 0rem;
+  min-height: 19.8rem;
   ul {
     @include Variable.flex(space-between, center);
     font-size: 0.9rem;

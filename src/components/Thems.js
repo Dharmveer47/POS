@@ -12,7 +12,7 @@ export const DashThem = ({ children }) => {
 
 // For any component line break
 export const LineBrek = () => {
-  return <div></div>;
+  return <div className="line_break"></div>;
 };
 
 export const Search = ({ setData }) => {
@@ -39,4 +39,8 @@ export const Search = ({ setData }) => {
 //  For Pos only
 export const PosThem = ({ children, className }) => {
   return <div className={`${className} pos__them`}>{children}</div>;
+};
+
+export const DropThem = ({ children, className }) => {
+  return <ul className={`${className} pos__warehouse_dropdown`}>{children}</ul>;
 };

@@ -1,10 +1,7 @@
 @use "../Variable";
-// .pos__product {
-//   //   border: 1px solid red;
- 
-//   height: 85vh;
-// //   width: 30rem;        
-// }
+.pos__product {
+  height: 36rem;
+}
 .product__navigation {
   @include Variable.flex(space-between, center);
   width: 90%;
@@ -16,6 +13,22 @@
     padding: 0.1rem 0.3rem;
     width: 9rem;
     border-radius: 5px;
+    position: relative;
+    >span{
+      font-size: .8rem;
+    }
+    .pos__product_dropdown {
+      transform: scale(0);
+      transition: all ease .2s;
+    }
+    &:hover .pos__product_dropdown {
+      transform: scale(1);
+    }
+    .pos__product_dropdown {
+      top: 1.3rem;
+      left: 0;
+      width: 100%;
+    }
   }
 }
 .product__pagination {
@@ -24,24 +37,24 @@
   }
 }
 .product_lists {
-    @include Variable.flex(center, center);
-    flex-wrap: wrap;
+  @include Variable.flex(center, center);
+  flex-wrap: wrap;
   .product__single {
     box-shadow: 0px 0px 5px gray;
-    margin: .5rem;
+    margin: 0.5rem;
     width: 5rem;
     height: 6rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     > div img {
-        width: 5rem;
-        height: 4.5rem;
-        border-radius: .5rem;
+      width: 5rem;
+      height: 4.5rem;
+      border-radius: 0.5rem;
     }
-    .product__name{
-        font-size: .8rem;
-        text-align: center;
-        margin-top: .2rem;
+    .product__name {
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 0.2rem;
     }
   }
 }

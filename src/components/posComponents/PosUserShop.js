@@ -1,12 +1,13 @@
 import React from "react";
 import { SingleSelectButton } from "./SelectProduct";
 import { BsCash } from "react-icons/bs";
-import { PosThem } from "../Thems";
+import { PosThem, LineBrek } from "../Thems";
+
 import "../../Styles/PosStyle/PosUserShop.scss";
+
 const PosUserShop = () => {
- 
-    return (
-    <PosThem>
+  return (
+    <PosThem className="pos__user_shop">
       <div className="pos__user_account">
         <div className="pos__user_info">
           <div className="pos__user_logo">X</div>
@@ -16,11 +17,16 @@ const PosUserShop = () => {
             <p>New York, USA</p>
           </div>
         </div>
-
+        <LineBrek />
         <div className="pos__user_iteam">
-          <SingelUserIteam />
-          <SingelUserIteam />
+          <SingelUserIteam value={0} des="Total Items" />
+          <SingelUserIteam value={0.0} des="Actual Total Price" />
+          <SingelUserIteam value={0.0} des="DISCOUNT (NaN %)" />
+          <SingelUserIteam value={0.0} des="Subtotal" />
+          <SingelUserIteam value={0.0} des="Tax (0%)" />
+          <SingelUserIteam value={0.0} des="Total" />
         </div>
+        <LineBrek />
         <div className="pos__pay_with">
           <SingleSelectButton
             color="#AE69F5"
@@ -33,11 +39,11 @@ const PosUserShop = () => {
   );
 };
 
-const SingelUserIteam = () => {
+const SingelUserIteam = ({ des, value }) => {
   return (
     <div className="pos__single_iteam">
-      <p>Total Items </p>
-      <p>0</p>
+      <p>{des}</p>
+      <p>{value}</p>
     </div>
   );
 };

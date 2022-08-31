@@ -1,4 +1,7 @@
 @use "../Variable";
+.pos__user_shop {
+  max-width: 25rem;
+}
 .pos__user_info {
   @include Variable.flex(initial, center);
   .pos__user_logo {
@@ -8,6 +11,7 @@
     height: 5rem;
     margin: 0.5rem;
     border-radius: 0.2rem;
+    margin-right: 2rem;
   }
   .pos__user_detai {
     h1 {
@@ -21,12 +25,16 @@
     }
   }
 }
+
 .pos__single_iteam {
   @include Variable.flex(space-between, center);
   width: 90%;
   margin: auto;
-  line-height: 1.5rem;
+  line-height: 2rem;
+  font-size: 0.9rem;
 }
+
 .pos__pay_with {
-  @include Variable.flex(center, center);
+  @include Variable.flex(center, flex-end);
+  height: 11.7rem;
 }

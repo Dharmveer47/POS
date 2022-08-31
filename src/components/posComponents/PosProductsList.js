@@ -1,18 +1,31 @@
-import React from "react";
-import { PosThem } from "../Thems";
+import React, { useState } from "react";
+import { PosThem, DropThem } from "../Thems";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { PosListButton } from "../Button";
 import "../../Styles/PosStyle/PosProduct.scss";
 
 const PosProductsList = () => {
+  const Filter = ["Electronics", "Fresh", "Mobile", "Clothing"];
+  const [value, setValue] = useState("All");
   return (
     <PosThem className="pos__product">
       <div className="product__navigation">
         <div className="product__filter">
-          <span className="product_dropdownList">All</span>
+          <span className="product_dropdownList">{value}</span>
           <div>
             <RiArrowDropDownLine />
           </div>
+          <DropThem className="pos__product_dropdown">
+            {Filter.map((d, i) => (
+              <li
+                onClick={() => setValue(d)}
+                key={i}
+                className={`${d === value && "active"}`}
+              >
+                {d}
+              </li>
+            ))}
+          </DropThem>
         </div>
         <div className="product__pagination">
           <PosListButton bName="Previous" />

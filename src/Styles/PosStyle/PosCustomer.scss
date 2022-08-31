@@ -1,6 +1,7 @@
 @use "../Variable";
 .pos__customer_selection {
   @include Variable.flex(space-between, center);
+  min-width: 30rem;
 }
 // .pos__singleCustomer{
 
@@ -21,11 +22,55 @@
   width: min-content;
   position: relative;
   input {
-    padding: 5px 10px;
+    padding: 3px 10px;
+    outline: none;
     cursor: pointer;
+    font-size: 0.7rem;
+    border-radius: 0.2rem;
+    border: 1px solid gray;
   }
   svg {
     position: absolute;
     right: 0;
   }
+}
+
+.pos__pop_up_customer {
+  position: absolute;
+  top: 5rem;
+  right: 18%;
+  box-shadow: 0 0 0 900vh rgba(0, 0, 0, 0.452);
+  width: 50rem;
+}
+.pos__pop_up_headings {
+  @include Variable.flex(space-between, center);
+  svg {
+    &:hover {
+      fill: black;
+      cursor: pointer;
+    }
+  }
+}
+.pos__input_customer_selection {
+  @include Variable.flex(space-around, center);
+}
+.pos__customer_add_container {
+  h1 {
+    font-size: 0.8rem;
+    margin: 0.4rem 0;
+  }
+  input {
+    padding: 0.4rem 0.2rem;
+    border-radius: 0.2rem;
+    width: 21rem;
+    margin: 0.3rem 0;
+    border: 1px solid rgba(133, 133, 133, 0.61);
+    &:hover {
+      border: 1px solid rgba(77, 23, 204, 0.74);
+    }
+  }
+}
+.pos__customer_button {
+  margin: 1rem 0;
+  margin-left: 1rem;
 }
