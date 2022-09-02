@@ -12,9 +12,16 @@ $button-Fcolor: #fff;
   color: $button-Fcolor;
   cursor: pointer;
   padding: 10px 16px;
+  transition: all ease-in-out 0.2s;
+  &:hover {
+    box-shadow: 4px 3px 3px gray;
+  }
+  &:active{
+    box-shadow: 4px 3px 3px inset gray;
+  }
 }
 .product__previous {
   padding: 3px 8px;
   margin: 5px;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }

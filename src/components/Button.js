@@ -1,13 +1,22 @@
 import React from "react";
 import "../Styles/buttons.scss";
-export const Button = ({ bName = "", onClick, bg = "#AE69F5" }) => {
+export const Button = ({
+  style = {},
+  w = "",
+  bName = "",
+  onClick,
+  bg = "#AE69F5",
+  className,
+}) => {
   return (
     <>
       <button
-        className="button__pos"
+        className={`${className} button__pos`}
         onClick={onClick}
         style={{
           backgroundColor: bg,
+          width: w,
+          ...style,
         }}
       >
         {bName}
@@ -16,6 +25,6 @@ export const Button = ({ bName = "", onClick, bg = "#AE69F5" }) => {
   );
 };
 
-export const PosListButton = ({bName=""}) => {
+export const PosListButton = ({ bName = "" }) => {
   return <button className="product__previous">{bName}</button>;
 };

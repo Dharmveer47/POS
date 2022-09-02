@@ -5,11 +5,10 @@ import { MdClose } from "react-icons/md";
 import { Button } from "../Button";
 import { RiAddCircleFill, RiArrowDropDownLine } from "react-icons/ri";
 // cus = customer
-
 import "../../Styles/PosStyle/PosCustomer.scss";
 const PosCustomeSelection = () => {
   const [toggle, setToggle] = useState(true);
-  const [addressToggle, setAddressToggle] = useState(false);
+  const [addressToggle, setAddressToggle] = useState(true);
   return (
     <PosThem className="pos__customer_selection">
       <SingelChooseCustomer
@@ -43,7 +42,7 @@ const SingelChooseCustomer = ({ cus, onClick }) => {
         <RiAddCircleFill onClick={onClick} />
       </div>
       <div className="pos__choose_input">
-        <input type="text" value="Choose Customer" />
+        <input type="text" defaultValue={cus} />
         <RiArrowDropDownLine />
       </div>
     </div>

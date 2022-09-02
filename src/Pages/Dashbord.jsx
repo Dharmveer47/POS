@@ -10,7 +10,6 @@ import "../Styles/Dashboard.scss";
 
 const Dashbord = () => {
   const navHide = useSelector((state) => state.POS.NAV_HIDE);
-  console.log(navHide)
 
   return (
     <>

@@ -45,7 +45,7 @@ const WareHouseInput = () => {
     "Perfect Herbal Shop 2",
     "Perfect Herbal Shop 3",
   ];
-  const [value, setValue] = useState([]);
+  const [value, setValue] = useState("");
   return (
     <form className="pos__input_select_warehouse">
       <input
