@@ -3,7 +3,8 @@ import React from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { BsFillCalculatorFill, BsFilesAlt } from "react-icons/bs";
 // Redux
-import { setnNavHide } from "../../Store/dataSlice";
+import { setLogin } from "../../Store/dataSlice";
+import { LocalStorage } from "../Login/Login";
 import { useDispatch } from "react-redux";
 import { POS_CONTROLLER_INITIAL_STATE } from "../../Store/dataSlice";
 // Css
@@ -24,13 +25,14 @@ const PosNavigation = () => {
       <div className="pos__right_sidebar">
         {/* <WareHouseInput /> */}
         <Button
-          bName="Store Owner Login"
-          onClick={() =>
-            dispatch(
-              setnNavHide({ [POS_CONTROLLER_INITIAL_STATE.NAV_HIDE]: false })
-            )
-          }
+          bName="Biller Logout"
+          bg="#7ebf49"
+          onClick={() => {
+            localStorage.removeItem(LocalStorage.pms_user);
+            dispatch(setLogin({ [POS_CONTROLLER_INITIAL_STATE.LOGIN]: false }));
+          }}
         />
+        <Button bName="Store Owner Login" />
         <Button bName={<BsFillCalculatorFill />} />
         <FileIcon />
         <Button bName={<FaUserAlt />} bg="darkgray" />
@@ -38,7 +40,6 @@ const PosNavigation = () => {
     </div>
   );
 };
-
 
 const FileIcon = () => {
   return (

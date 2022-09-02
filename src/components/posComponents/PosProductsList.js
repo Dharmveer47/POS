@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PosThem, DropThem } from "../Thems";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { PosListButton } from "../Button";
@@ -7,10 +7,29 @@ import "../../Styles/PosStyle/PosProduct.scss";
 const PosProductsList = () => {
   const Filter = ["Electronics", "Fresh", "Mobile", "Clothing"];
   const [value, setValue] = useState("All");
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchData = async () => {
+    setLoading(true);
+    let response = await fetch("https://dummyjson.com/products");
+    let data = await response.json();
+    if (response.status === 200) {
+      setProduct(data.products);
+    }
+    setLoading(false);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+  if (product.length === 0) {
+    <div className="pos__product">loading...</div>;
+  }
+  console.log(product);
   return (
     <PosThem className="pos__product">
       <div className="product__navigation">
-        <div className="product__filter" onClick={()=> {}}>
+        <div className="product__filter" onClick={() => {}}>
           <span className="product_dropdownList">{value}</span>
           <div>
             <RiArrowDropDownLine />
@@ -34,40 +53,29 @@ const PosProductsList = () => {
         </div>
       </div>
       <ProductLists>
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
-        <PosProduct />
+        {product.map((data) => (
+          <PosProduct key={data.id} imgUrl={data.thumbnail} name={data.title} />
+        ))}
       </ProductLists>
     </PosThem>
   );
 };
 
-const PosProduct = () => {
-  const imgUrl =
-    "https://rawal-admin.themes-coder.net/gallary/202208215752food1.jpeg";
+const PosProduct = ({ imgUrl, name }) => {
   return (
     <div className="product_lists">
       <div className="product__single">
         <div>
           <img src={imgUrl} alt="productList" />
         </div>
-        <h4 className="product__name">Momos</h4>
+        <h4 className="product__name">{name}</h4>
       </div>
     </div>
   );
 };
 
 const ProductLists = ({ children }) => {
-  return <div className="product_lists">{children}</div>;
+  return <div className="product_lists main_produtlist">{children}</div>;
 };
 
 export default PosProductsList;

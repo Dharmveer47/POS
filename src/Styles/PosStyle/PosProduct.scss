@@ -1,25 +1,36 @@
 @use "../Variable";
 .pos__product {
   height: 36rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  padding: 0px;
 }
 .product__navigation {
   @include Variable.flex(space-between, center);
-  width: 90%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(221, 221, 221);
+  box-shadow: 1px 1px 1px gray;
+  height: 3rem;
   margin: auto;
   .product__filter {
     @include Variable.flex(space-between, center);
+
     border: 1px solid gray;
     margin: 0.1rem 0.3rem;
     padding: 0.1rem 0.3rem;
     width: 9rem;
     border-radius: 5px;
     position: relative;
-    >span{
-      font-size: .8rem;
+    > span {
+      font-size: 0.8rem;
     }
     .pos__product_dropdown {
       transform: scale(0);
-      transition: all ease .2s;
+      transition: all ease 0.2s;
     }
     &:hover .pos__product_dropdown {
       transform: scale(1);
@@ -31,6 +42,10 @@
     }
   }
 }
+
+// .prodcut_list_main {
+//   margin-top: 2rem;
+// }
 .product__pagination {
   .product__counter {
     font-size: 0.8rem;
@@ -55,6 +70,16 @@
       font-size: 0.8rem;
       text-align: center;
       margin-top: 0.2rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      height: 14px;
+      width: 5rem;
     }
   }
+}
+.main_produtlist {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
 }
