@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import React from "react";
+// import { RiArrowDropDownLine } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 import { BsFillCalculatorFill, BsFilesAlt } from "react-icons/bs";
 // Redux
@@ -22,9 +22,9 @@ const PosNavigation = () => {
         <div className="pos__current_date">Monday, 29 August 2022</div>
       </div>
       <div className="pos__right_sidebar">
-        <WareHouseInput />
+        {/* <WareHouseInput /> */}
         <Button
-          bName="Dashboard"
+          bName="Store Owner Login"
           onClick={() =>
             dispatch(
               setnNavHide({ [POS_CONTROLLER_INITIAL_STATE.NAV_HIDE]: false })
@@ -38,40 +38,6 @@ const PosNavigation = () => {
     </div>
   );
 };
-
-const WareHouseInput = () => {
-  const Warehouse = [
-    "Perfect Herbal Shop 1",
-    "Perfect Herbal Shop 2",
-    "Perfect Herbal Shop 3",
-  ];
-  const [value, setValue] = useState("");
-  return (
-    <form className="pos__input_select_warehouse">
-      <input
-        type="text"
-        value={value}
-        onFocus={() => console.log("focused")}
-        placeholder="Select Warehouse"
-      />
-      <div className="pos__input_dropdown_icon">
-        <RiArrowDropDownLine />
-      </div>
-      <ul className="pos__warehouse_dropdown">
-        {Warehouse.map((d, i) => (
-          <li
-            key={i}
-            onClick={() => setValue(d)}
-            className={`${value === d && "active"}`}
-          >
-            {d}
-          </li>
-        ))}
-      </ul>
-    </form>
-  );
-};
-
 
 
 const FileIcon = () => {

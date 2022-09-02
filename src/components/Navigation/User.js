@@ -3,21 +3,19 @@ import { FaUserAlt } from "react-icons/fa";
 import { Button } from "../Button";
 import { useDispatch } from "react-redux";
 
-import {
-  setnNavHide,
-  POS_CONTROLLER_INITIAL_STATE,
-} from "../../Store/dataSlice";
+import { setLogin, POS_CONTROLLER_INITIAL_STATE } from "../../Store/dataSlice";
 
 export const User = () => {
   const dispatch = useDispatch();
+
   return (
     <div className="admin__UserIcon">
       <Button
-        bName="POS"
+        bName="LOGOUT"
+        bg="#6ebf49"
         onClick={() => {
-          dispatch(
-            setnNavHide({ [POS_CONTROLLER_INITIAL_STATE.NAV_HIDE]: true })
-          );
+          localStorage.removeItem("pms_user");
+          dispatch(setLogin({ [POS_CONTROLLER_INITIAL_STATE.LOGIN]: false }));
         }}
       />
       <div className="admin__biller">

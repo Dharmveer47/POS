@@ -7,7 +7,7 @@ import "../../Styles/PosStyle/SelectProduct.scss";
 
 const SelectProduct = () => {
   return (
-    <PosThem>
+    <PosThem className="pos__selectProduct">
       <h1 className="pos__select_prod">Select Product</h1>
       <div className="pos__input_and_name">
         <div className="pos__name">

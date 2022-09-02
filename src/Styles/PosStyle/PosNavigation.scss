@@ -31,11 +31,12 @@ $color: #ae69f5;
     box-shadow: 0px 0px 5px gray;
     padding: 0.5rem 0.6rem;
     border-radius: 0.3rem;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
+    letter-spacing: 2px;
   }
   .pos__current_date {
     color: gray;
-    padding-left: 0.5rem;
+    padding-left: 1rem;
     border-left: 2px solid rgba(128, 128, 128, 0.534);
   }
 }
@@ -44,27 +45,29 @@ $color: #ae69f5;
   @include Variable.flex(space-between, center);
   .pos__input_select_warehouse {
     @include Variable.flex(space-between, center);
-    input {
+    span {
       padding: 8px 10px;
       border-radius: 0.2rem;
       border: 1px solid gray;
       outline: none;
+      width: 12rem;
+      font-size: 0.8rem;
     }
-    .pos__warehouse_dropdown{
+    .pos__warehouse_dropdown {
       transform: scale(0);
-      transition: all ease-in .2s;
+      transition: all ease-in 0.2s;
     }
-    &:hover .pos__warehouse_dropdown{
+    &:hover .pos__warehouse_dropdown {
       transform: scale(1);
     }
-    &:focus .pos__warehouse_dropdown{
+    &:focus .pos__warehouse_dropdown {
       transform: scale(1);
     }
     position: relative;
     .pos__input_dropdown_icon {
       position: absolute;
       right: 0.2rem;
-      &:hover{
+      &:hover {
         color: black;
         cursor: pointer;
       }
@@ -86,24 +89,24 @@ $color: #ae69f5;
     }
   }
 }
-.pos__warehouse_dropdown{
-  font-size: .8rem;
+.pos__warehouse_dropdown {
+  font-size: 0.8rem;
   background-color: #fff;
   position: absolute;
   z-index: 10;
   top: 1.9rem;
-  left: .1rem;
+  left: 0.1rem;
   box-shadow: 2px 1px 5px gray;
-  padding: .8rem .5rem;
-  margin: .1rem;
-  border-radius: .2rem;
-  li{
+  padding: 0.8rem 0.5rem;
+  margin: 0.1rem;
+  border-radius: 0.2rem;
+  li {
     white-space: nowrap;
-    margin: .2rem 0;
-    padding: .4rem;
-    border-radius: .2rem;
+    margin: 0.2rem 0;
+    padding: 0.4rem;
+    border-radius: 0.2rem;
     cursor: pointer;
-    &:hover{
+    &:hover {
       background-color: rgb(218, 218, 218);
       color: rgb(49, 49, 49);
     }

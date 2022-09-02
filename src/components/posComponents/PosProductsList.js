@@ -10,7 +10,7 @@ const PosProductsList = () => {
   return (
     <PosThem className="pos__product">
       <div className="product__navigation">
-        <div className="product__filter">
+        <div className="product__filter" onClick={()=> {}}>
           <span className="product_dropdownList">{value}</span>
           <div>
             <RiArrowDropDownLine />

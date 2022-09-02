@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+
+import PointOfSale from "../../Pages/POS/PointOfSale";
+import PosNavigation from "../../components/PosNavigation/PosNavigation";
 
 const IndexBiller = () => {
   return (
-    <div>IndexBiller</div>
-  )
-}
+    <div>
+      <PosNavigation />
+      <PointOfSale />
+    </div>
+  );
+};
 
-export default IndexBiller
+export default IndexBiller;

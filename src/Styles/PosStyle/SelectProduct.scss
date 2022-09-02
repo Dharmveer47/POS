@@ -1,4 +1,7 @@
 @use "../Variable";
+.pos__selectProduct {
+  min-width: 30rem;
+}
 .pos__select_prod {
   font-size: 0.9rem;
   margin: 0.5rem 0;
@@ -24,7 +27,7 @@
 }
 .pos__select_product_table {
   margin: 1rem 0rem;
-  min-height: 19.8rem;
+  min-height: 25rem;
   ul {
     @include Variable.flex(space-between, center);
     font-size: 0.9rem;

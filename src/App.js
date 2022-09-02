@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminNav from "./components/Navigation/AdminNav";
-import Dashbord from "./Pages/Dashbord";
-import StoreView from "./Pages/StoreView";
-import { ProductRequest } from "./components/MemberProduct/ProductRequest";
+// import Dashbord from "./Pages/Dashbord";
+// import StoreView from "./Pages/StoreView";
+// import { ProductRequest } from "./components/MemberProduct/ProductRequest";
 import Login from "./components/Login/Login";
 import IndexBiller from "./apps/biller/IndexBiller";
 import IndexAdmin from "./apps/admin/IndexAdmin";
@@ -45,7 +45,11 @@ function App() {
 }
 
 export const AppController = () => {
-  const loginStatus = useSelector((state) => state.POS.LOGIN);
+  let localCheck = JSON.parse(localStorage.getItem("pms_user"));
+  let loginState = useSelector((state) => state.POS.LOGIN);
+  const loginStatus = localCheck === null ? loginState : localCheck;
+  // console.log(localCheck);
+
   return (
     <BrowserRouter>
       {loginStatus?.email === authEmail[0].email ? (
@@ -53,18 +57,18 @@ export const AppController = () => {
           <AdminNav />
           <Routes>
             <Route path={NAVIGATION_LINKS.HOME} element={<IndexAdmin />} />
-            {/* <Route path={NAVIGATION_LINKS.HOME} element={<Dashbord />} />
-            <Route
-              path={NAVIGATION_LINKS.PRODUCT_REQUEST}
-              element={<ProductRequest />}
-            />
-            <Route path={NAVIGATION_LINKS.STORE_VIEW} element={<StoreView />} /> */}
           </Routes>
         </>
       ) : loginStatus?.email === authEmail[1].email ? (
         <>
           <Routes>
             <Route path={NAVIGATION_LINKS.HOME} element={<IndexStore />} />
+          </Routes>
+        </>
+      ) : loginStatus?.email === authEmail[2].email ? (
+        <>
+          <Routes>
+            <Route path={NAVIGATION_LINKS.HOME} element={<IndexBiller />} />
           </Routes>
         </>
       ) : (

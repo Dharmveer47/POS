@@ -16,6 +16,10 @@ export const authEmail = [
   { email: "biller@gmail.com", password: 123 },
 ];
 
+export const LocalStorage = {
+  pms_user: "pms_user",
+};
+
 const Login = () => {
   const dispatch = useDispatch();
   const emailRef = useRef();
@@ -30,12 +34,16 @@ const Login = () => {
     };
 
     const authUser = authEmail.filter((data) => {
-      if (data.email === getInput.email || data.password === getInput.password) {
+      if (
+        data.email === getInput.email ||
+        data.password === getInput.password
+      ) {
         return data;
       }
       return null;
     });
     if (authUser.length !== 0) {
+      localStorage.setItem(LocalStorage.pms_user, JSON.stringify(authUser[0]));
       dispatch(setLogin({ [POS_CONTROLLER_INITIAL_STATE.LOGIN]: authUser[0] }));
     }
     emailRef.current.value = "";
