@@ -8,16 +8,16 @@ const PosProductsList = () => {
   const Filter = ["Electronics", "Fresh", "Mobile", "Clothing"];
   const [value, setValue] = useState("All");
   const [product, setProduct] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
-    setLoading(true);
+    // setLoading(true);
     let response = await fetch("https://dummyjson.com/products");
     let data = await response.json();
     if (response.status === 200) {
       setProduct(data.products);
     }
-    setLoading(false);
+    // setLoading(false);
   };
   useEffect(() => {
     fetchData();
