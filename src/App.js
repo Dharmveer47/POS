@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminNav from "./components/Navigation/AdminNav";
 // import Dashbord from "./Pages/Dashbord";
@@ -14,6 +14,8 @@ import { authEmail } from "./components/Login/Login";
 import { Provider } from "react-redux";
 import { store } from "./Store/store";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setLogin, POS_CONTROLLER_INITIAL_STATE } from "./Store/dataSlice";
 
 import "./App.css";
 
@@ -45,27 +47,43 @@ function App() {
 }
 
 export const AppController = () => {
+  const dispatch = useDispatch();
+  console.log("renderCoutn");
   let localCheck = JSON.parse(localStorage.getItem("pms_user"));
-  let loginState = useSelector((state) => state.POS.LOGIN);
-  const loginStatus = localCheck === null ? loginState : localCheck;
+  let loginState = useSelector((state) => state.POS.LOGIN); // loginState inital value is => false
+  // for so
+  const setStoreTrue = () => {
+    dispatch(setLogin({ [POS_CONTROLLER_INITIAL_STATE.LOGIN]: localCheck }));
+  };
+  const setStoreFalse = () => {
+    dispatch(setLogin({ [POS_CONTROLLER_INITIAL_STATE.LOGIN]: false }));
+  };
+  useEffect(() => {
+    if (localCheck) {
+      setStoreTrue();
+    } else {
+      setStoreFalse();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   // console.log(localCheck);
 
   return (
     <BrowserRouter>
-      {loginStatus?.email === authEmail[0].email ? (
+      {loginState?.email === authEmail[0].email ? (
         <>
           <AdminNav />
           <Routes>
             <Route path={NAVIGATION_LINKS.HOME} element={<IndexAdmin />} />
           </Routes>
         </>
-      ) : loginStatus?.email === authEmail[1].email ? (
+      ) : loginState?.email === authEmail[1].email ? (
         <>
           <Routes>
             <Route path={NAVIGATION_LINKS.HOME} element={<IndexStore />} />
           </Routes>
         </>
-      ) : loginStatus?.email === authEmail[2].email ? (
+      ) : loginState?.email === authEmail[2].email ? (
         <>
           <Routes>
             <Route path={NAVIGATION_LINKS.HOME} element={<IndexBiller />} />

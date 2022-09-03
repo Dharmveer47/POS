@@ -25,6 +25,10 @@ export const Button = ({
   );
 };
 
-export const PosListButton = ({ bName = "" }) => {
-  return <button className="product__previous">{bName}</button>;
+export const PosListButton = ({ bName = "", onClick }) => {
+  return (
+    <button className="product__previous" onClick={onClick}>
+      {bName}
+    </button>
+  );
 };

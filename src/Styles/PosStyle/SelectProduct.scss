@@ -27,12 +27,30 @@
 }
 .pos__select_product_table {
   margin: 1rem 0rem;
-  min-height: 25rem;
-  ul {
-    @include Variable.flex(space-between, center);
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: gray;
+  height: 25rem;
+  overflow-y: auto;
+  table {
+    width: 100%;
+    thead {
+      tr {
+        th {
+          text-align: start;
+          font-size: 0.9rem;
+          font-weight: bold;
+          color: #2e2e2e;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          text-align: start;
+          font-size: 0.8rem;
+          color: #2e2e2e;
+          padding: 0.5rem 0;
+        }
+      }
+    }
   }
 }
 
@@ -86,4 +104,13 @@
   &:hover {
     box-shadow: 2px 2px 5px gray;
   }
+}
+.pos__select_product_table_icon {
+  display: flex;
+  flex-direction: column;
+}
+.pos__select_product_table_icon_all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
