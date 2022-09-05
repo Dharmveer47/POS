@@ -4,12 +4,61 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { AiFillDelete } from "react-icons/ai";
 import { BsFolderFill } from "react-icons/bs";
+import IncDrop from "../../icons/fe_drop-down.svg";
+import DecDrop from "../../icons/fe_drop-down-decrement.svg";
 import "../../Styles/PosStyle/SelectProduct.scss";
-import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import {
+  setPosProductInc,
+  POS_CONTROLLER_INITIAL_STATE,
+} from "../../Store/dataSlice";
+// import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 
 const SelectProduct = () => {
+  const dispatch = useDispatch();
   const prodcuts = useSelector((state) => state.POS.POS_PRODUCTS);
-  console.log(prodcuts);
+  const counterRedux = useSelector((state) => state.POS.POS_PRODUCTS_INC);
+  let a = 1;
+  const newProduct = (p) => {
+  
+    if (p.length !== 0) {
+      const modifidedProdct = p.map((d) => {
+        return {
+          ...d,
+          counter: (function () {
+            if (counterRedux.id === d.id) {
+              return a++;
+            }
+            return a;
+          })(),
+        };
+      });
+      return modifidedProdct;
+    }
+  };
+  console.log(newProduct(prodcuts));
+  function handleIcrement(id) {
+    dispatch(
+      setPosProductInc({
+        [POS_CONTROLLER_INITIAL_STATE.POS_PRODUCTS_INC]: {
+          counter: counterRedux?.counter + 1,
+          id,
+        },
+      })
+    );
+  }
+  function handleDecrement(id) {
+    if (counterRedux > 1) {
+      dispatch(
+        setPosProductInc({
+          [POS_CONTROLLER_INITIAL_STATE.POS_PRODUCTS_INC]: {
+            counter: counterRedux?.counter - 1,
+            id,
+          },
+        })
+      );
+    }
+  }
   return (
     <PosThem className="pos__selectProduct">
       <h1 className="pos__select_prod">Select Product</h1>
@@ -38,10 +87,18 @@ const SelectProduct = () => {
                   <td>{prodcut?.title}</td>
                   <td>{prodcut?.price}</td>
                   <td className="pos__select_product_table_icon_all">
-                    <div>5</div>
+                    <div>{"counter"}</div>
                     <span className="pos__select_product_table_icon">
-                      <MdOutlineArrowDropUp />
-                      <MdOutlineArrowDropDown />
+                      <img
+                        src={IncDrop}
+                        alt="increment"
+                        onClick={() => handleIcrement(prodcut.id)}
+                      />
+                      <img
+                        src={DecDrop}
+                        alt="decrement"
+                        onClick={() => handleDecrement(prodcut.id)}
+                      />
                     </span>
                   </td>
                   <td>{prodcut?.discountPercentage}</td>

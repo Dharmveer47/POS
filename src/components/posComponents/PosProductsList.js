@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PosThem, DropThem } from "../Thems";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { PosListButton } from "../Button";
+import { useSelector } from "react-redux";
 import "../../Styles/PosStyle/PosProduct.scss";
 
 // Redux
@@ -14,6 +15,7 @@ import {
 const PosProductsList = () => {
   const dispatch = useDispatch();
   const Filter = ["skincare", "fragrances", "furniture", "groceries"];
+  const counterRedux = useSelector((state) => state.POS.POS_PRODUCTS_INC);
   const [value, setValue] = useState("All");
   const [product, setProduct] = useState([]);
   const [counter, setCounter] = useState(1);
@@ -25,16 +27,18 @@ const PosProductsList = () => {
     let response = await fetch("https://dummyjson.com/products");
     let data = await response.json();
     if (response.status === 200) {
+      
       setProduct(data.products);
     }
-    // setLoading(false);
   };
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (product.length === 0) {
     <div className="pos__product">loading...</div>;
   }
+
   function increment() {
     setCounter((e) => e + 1);
   }
@@ -43,7 +47,6 @@ const PosProductsList = () => {
       setCounter((e) => e - 1);
     }
   }
-
   let fullData = [];
   function handleProduct(data) {
     fullData.push(data);

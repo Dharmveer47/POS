@@ -108,9 +108,31 @@
 .pos__select_product_table_icon {
   display: flex;
   flex-direction: column;
+  margin: 0 5px;
 }
 .pos__select_product_table_icon_all {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  .pos__select_product_table_icon {
+    font-size: 1.5rem;
+    > :nth-child(1) {
+      position: absolute;
+      top: 0.4rem;
+    }
+    > :nth-child(2) {
+      position: absolute;
+      top: 0.9rem;
+    }
+    img {
+      cursor: pointer;
+      &:hover {
+        box-shadow: 1px 0px 2px gray;
+      }
+      &:active {
+        box-shadow: 1px 0px 2px inset gray;
+      }
+    }
+  }
 }
