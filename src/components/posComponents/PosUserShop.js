@@ -2,10 +2,19 @@ import React from "react";
 import { SingleSelectButton } from "./SelectProduct";
 import { BsCash } from "react-icons/bs";
 import { PosThem, LineBrek } from "../Thems";
-
+import { useSelector } from "react-redux";
 import "../../Styles/PosStyle/PosUserShop.scss";
 
 const PosUserShop = () => {
+  const prodcuts = useSelector((state) => state.POS.POS_PRODUCTS);
+  const totalPrice = (data) => {
+    if (data.length !== 0) {
+      let arrNumber = data.map((d) => d.price);
+      const sum = arrNumber.reduce((partialSum, a) => partialSum + a, 0);
+      return sum;
+    }
+    return 0;
+  };
   return (
     <PosThem className="pos__user_shop">
       <div className="pos__user_account">
@@ -19,10 +28,13 @@ const PosUserShop = () => {
         </div>
         <LineBrek />
         <div className="pos__user_iteam">
-          <SingelUserIteam value={0} des="Total Items" />
-          <SingelUserIteam value={0.0} des="Actual Total Price" />
+          <SingelUserIteam value={prodcuts?.length} des="Total Items" />
+          <SingelUserIteam
+            value={totalPrice(prodcuts)}
+            des="Actual Total Price"
+          />
           <SingelUserIteam value={0.0} des="DISCOUNT (NaN %)" />
-          <SingelUserIteam value={0.0} des="Subtotal" />
+          <SingelUserIteam value={0} des="Subtotal" />
           <SingelUserIteam value={0.0} des="Tax (0%)" />
           <SingelUserIteam value={0.0} des="Total" />
         </div>

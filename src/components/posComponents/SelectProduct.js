@@ -18,25 +18,24 @@ const SelectProduct = () => {
   const dispatch = useDispatch();
   const prodcuts = useSelector((state) => state.POS.POS_PRODUCTS);
   const counterRedux = useSelector((state) => state.POS.POS_PRODUCTS_INC);
-  let a = 1;
-  const newProduct = (p) => {
-  
-    if (p.length !== 0) {
-      const modifidedProdct = p.map((d) => {
-        return {
-          ...d,
-          counter: (function () {
-            if (counterRedux.id === d.id) {
-              return a++;
-            }
-            return a;
-          })(),
-        };
-      });
-      return modifidedProdct;
-    }
-  };
-  console.log(newProduct(prodcuts));
+  // let a = 1;
+  // const newProduct = (p) => {
+  //   if (p.length !== 0) {
+  //     const modifidedProdct = p.map((d) => {
+  //       return {
+  //         ...d,
+  //         counter: (function () {
+  //           if (counterRedux.id === d.id) {
+  //             return a++;
+  //           }
+  //           return a;
+  //         })(),
+  //       };
+  //     });
+  //     return modifidedProdct;
+  //   }
+  // };
+  // console.log(newProduct(prodcuts));
   function handleIcrement(id) {
     dispatch(
       setPosProductInc({
@@ -59,6 +58,13 @@ const SelectProduct = () => {
       );
     }
   }
+  function claculatePercent(data) {
+    let price = data?.price;
+    let percentage = data?.discountPercentage;
+    let savedMoney = (price * percentage) / 100;
+    let totalPrice = price - savedMoney;
+    return Math.round(totalPrice);
+  }
   return (
     <PosThem className="pos__selectProduct">
       <h1 className="pos__select_prod">Select Product</h1>
@@ -76,7 +82,7 @@ const SelectProduct = () => {
               <th>Name</th>
               <th>Price</th>
               <th>Quanity</th>
-              <th>Discunt Price</th>
+              <th>Discunt %</th>
               <th>Subtotal</th>
             </tr>
           </thead>
@@ -87,7 +93,7 @@ const SelectProduct = () => {
                   <td>{prodcut?.title}</td>
                   <td>{prodcut?.price}</td>
                   <td className="pos__select_product_table_icon_all">
-                    <div>{"counter"}</div>
+                    <div>1</div>
                     <span className="pos__select_product_table_icon">
                       <img
                         src={IncDrop}
@@ -102,7 +108,7 @@ const SelectProduct = () => {
                     </span>
                   </td>
                   <td>{prodcut?.discountPercentage}</td>
-                  <td>1020</td>
+                  <td>{claculatePercent(prodcut)}</td>
                 </tr>
               );
             })}

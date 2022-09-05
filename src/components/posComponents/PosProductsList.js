@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PosThem, DropThem } from "../Thems";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { PosListButton } from "../Button";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import "../../Styles/PosStyle/PosProduct.scss";
 
 // Redux
@@ -15,7 +15,7 @@ import {
 const PosProductsList = () => {
   const dispatch = useDispatch();
   const Filter = ["skincare", "fragrances", "furniture", "groceries"];
-  const counterRedux = useSelector((state) => state.POS.POS_PRODUCTS_INC);
+  // const counterRedux = useSelector((state) => state.POS.POS_PRODUCTS_INC);
   const [value, setValue] = useState("All");
   const [product, setProduct] = useState([]);
   const [counter, setCounter] = useState(1);
@@ -27,7 +27,6 @@ const PosProductsList = () => {
     let response = await fetch("https://dummyjson.com/products");
     let data = await response.json();
     if (response.status === 200) {
-      
       setProduct(data.products);
     }
   };
