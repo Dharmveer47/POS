@@ -26,6 +26,11 @@
   }
 }
 
+.pos__user_iteam {
+  > :nth-last-child(1) {
+    font-weight: bold;
+  }
+}
 .pos__single_iteam {
   @include Variable.flex(space-between, center);
   width: 90%;
@@ -33,7 +38,6 @@
   line-height: 2rem;
   font-size: 0.9rem;
 }
-
 .pos__pay_with {
   @include Variable.flex(center, flex-end);
   height: 12rem;

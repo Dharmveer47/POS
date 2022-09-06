@@ -5,6 +5,7 @@ export const POS_CONTROLLER_INITIAL_STATE = {
   LOGIN: "LOGIN",
   POS_PRODUCTS: "POS_PRODUCTS",
   POS_PRODUCTS_INC: "POS_PRODUCTS_INC",
+  POS_SELECTED_PRODUCT: "POS_SELECTED_PRODUCT",
 };
 
 const POS_CONTROLLER = createSlice({
@@ -14,6 +15,7 @@ const POS_CONTROLLER = createSlice({
     LOGIN: false,
     POS_PRODUCTS: [],
     POS_PRODUCTS_INC: { counter: 1, id: 1 },
+    POS_SELECTED_PRODUCT: [],
   },
   reducers: {
     setnNavHide(state, action) {
@@ -28,9 +30,17 @@ const POS_CONTROLLER = createSlice({
     setPosProductInc(state, action) {
       state.POS_PRODUCTS_INC = action.payload.POS_PRODUCTS_INC;
     },
+    setPosSelectedProduct(state, action) {
+      state.POS_SELECTED_PRODUCT = action.payload.POS_SELECTED_PRODUCT;
+    },
   },
 });
 
-export const { setnNavHide, setLogin, setPosProduct, setPosProductInc } =
-  POS_CONTROLLER.actions;
+export const {
+  setnNavHide,
+  setLogin,
+  setPosProduct,
+  setPosProductInc,
+  setPosSelectedProduct,
+} = POS_CONTROLLER.actions;
 export const POST_NAVHIDE_SHOW = POS_CONTROLLER.reducer;

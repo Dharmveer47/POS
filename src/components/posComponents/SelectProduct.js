@@ -10,6 +10,8 @@ import "../../Styles/PosStyle/SelectProduct.scss";
 import { useDispatch } from "react-redux";
 import {
   setPosProductInc,
+  setPosProduct,
+  setPosSelectedProduct,
   POS_CONTROLLER_INITIAL_STATE,
 } from "../../Store/dataSlice";
 // import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
@@ -18,24 +20,6 @@ const SelectProduct = () => {
   const dispatch = useDispatch();
   const prodcuts = useSelector((state) => state.POS.POS_PRODUCTS);
   const counterRedux = useSelector((state) => state.POS.POS_PRODUCTS_INC);
-  // let a = 1;
-  // const newProduct = (p) => {
-  //   if (p.length !== 0) {
-  //     const modifidedProdct = p.map((d) => {
-  //       return {
-  //         ...d,
-  //         counter: (function () {
-  //           if (counterRedux.id === d.id) {
-  //             return a++;
-  //           }
-  //           return a;
-  //         })(),
-  //       };
-  //     });
-  //     return modifidedProdct;
-  //   }
-  // };
-  // console.log(newProduct(prodcuts));
   function handleIcrement(id) {
     dispatch(
       setPosProductInc({
@@ -58,6 +42,7 @@ const SelectProduct = () => {
       );
     }
   }
+
   function claculatePercent(data) {
     let price = data?.price;
     let percentage = data?.discountPercentage;
@@ -65,6 +50,29 @@ const SelectProduct = () => {
     let totalPrice = price - savedMoney;
     return Math.round(totalPrice);
   }
+
+  let pushedData = [];
+  function handleDraft(data) {
+    pushedData.push(data);
+    return pushedData;
+  }
+
+  const handleDelete = (d) => {
+    if (prodcuts.length !== 0) {
+      let filteredData = prodcuts.filter((data) => {
+        if (data.id === d.id) {
+          return false;
+        }
+        return data;
+      });
+      dispatch(
+        setPosProduct({
+          [POS_CONTROLLER_INITIAL_STATE.POS_PRODUCTS]: filteredData,
+        })
+      );
+    }
+  };
+
   return (
     <PosThem className="pos__selectProduct">
       <h1 className="pos__select_prod">Select Product</h1>
@@ -84,6 +92,7 @@ const SelectProduct = () => {
               <th>Quanity</th>
               <th>Discunt %</th>
               <th>Subtotal</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -109,18 +118,17 @@ const SelectProduct = () => {
                   </td>
                   <td>{prodcut?.discountPercentage}</td>
                   <td>{claculatePercent(prodcut)}</td>
+                  <td
+                    className="pos__select_product_table_icon_delete"
+                    onClick={() => handleDelete(prodcut)}
+                  >
+                    {<AiFillDelete />}
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
-        {/* <ul className="pos_selected_product">
-          <li>{prodcuts?.title}</li>
-          <li>{prodcuts?.price}</li>
-          <li>Quanity</li>
-          <li>{prodcuts?.discountPercentage}</li>
-          <li>Subtotal</li>
-        </ul> */}
       </div>
       <div className="pos__select_product_btn">
         <SingleSelectButton
@@ -132,6 +140,14 @@ const SelectProduct = () => {
         <SingleSelectButton
           color="#FFC107"
           name="Draft Order"
+          onClick={() =>
+            dispatch(
+              setPosSelectedProduct({
+                [POS_CONTROLLER_INITIAL_STATE.POS_SELECTED_PRODUCT]:
+                  handleDraft(prodcuts),
+              })
+            )
+          }
           icon={<BsFolderFill />}
         />
       </div>

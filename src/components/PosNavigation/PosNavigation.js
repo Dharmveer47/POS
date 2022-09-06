@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
-import { BsFillCalculatorFill, BsFilesAlt } from "react-icons/bs";
+import { BsFillCalculatorFill } from "react-icons/bs";
+import { Calculater } from "./Calculator";
 // Redux
 import { setLogin } from "../../Store/dataSlice";
 import { LocalStorage } from "../Login/Login";
 import { useDispatch } from "react-redux";
 import { POS_CONTROLLER_INITIAL_STATE } from "../../Store/dataSlice";
 // Css
-import "../../Styles/PosStyle/PosNavigation.scss";
 import { Button } from "../Button";
+import { FileIcon } from "./FileIcon";
+import "../../Styles/PosStyle/PosNavigation.scss";
 const PosNavigation = () => {
+  const [toggleCalc, setToggleCalc] = useState(false);
   const dispatch = useDispatch();
   return (
     <div className="pos__navigation">
@@ -32,20 +35,22 @@ const PosNavigation = () => {
             dispatch(setLogin({ [POS_CONTROLLER_INITIAL_STATE.LOGIN]: false }));
           }}
         />
-        <Button bName="Store Owner Login" />
-        <Button bName={<BsFillCalculatorFill />} />
+        <Button
+          bName="Store Owner Login"
+          onClick={() => {
+            localStorage.removeItem(LocalStorage.pms_user);
+            dispatch(setLogin({ [POS_CONTROLLER_INITIAL_STATE.LOGIN]: false }));
+          }}
+        />
+        <Button
+          onClick={() => setToggleCalc((e) => !e)}
+          bName={<BsFillCalculatorFill />}
+        />
+        {toggleCalc && <Calculater setToggleCalc={setToggleCalc} />}
+
         <FileIcon />
         <Button bName={<FaUserAlt />} bg="darkgray" />
       </div>
-    </div>
-  );
-};
-
-const FileIcon = () => {
-  return (
-    <div className="pos__file_icon">
-      <Button bName={<BsFilesAlt />} bg="#FFC107" />
-      <div className="pos__file_icon_alert">0</div>
     </div>
   );
 };

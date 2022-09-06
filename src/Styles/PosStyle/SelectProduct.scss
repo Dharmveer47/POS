@@ -137,3 +137,13 @@
     }
   }
 }
+
+.pos__select_product_table_icon_delete {
+  cursor: pointer;
+  &:hover {
+    color: gray;
+  }
+  &:active {
+    color: black;
+  }
+}

@@ -15,6 +15,25 @@ const PosUserShop = () => {
     }
     return 0;
   };
+
+  const handleDiscount = () => {
+    let total = totalPrice(prodcuts);
+    return Math.round(
+      (total *
+        (function () {
+          if (prodcuts.length !== 0) {
+            return prodcuts.length;
+          }
+          return 0;
+        })()) /
+        100
+    );
+  };
+  const handleSubTotal = () => {
+    let discount = handleDiscount();
+    let total = totalPrice(prodcuts);
+    return total - discount;
+  };
   return (
     <PosThem className="pos__user_shop">
       <div className="pos__user_account">
@@ -33,10 +52,10 @@ const PosUserShop = () => {
             value={totalPrice(prodcuts)}
             des="Actual Total Price"
           />
-          <SingelUserIteam value={0.0} des="DISCOUNT (NaN %)" />
-          <SingelUserIteam value={0} des="Subtotal" />
-          <SingelUserIteam value={0.0} des="Tax (0%)" />
-          <SingelUserIteam value={0.0} des="Total" />
+          <SingelUserIteam value={handleDiscount()} des="DISCOUNT" />
+          <SingelUserIteam value={handleSubTotal()} des="Subtotal" />
+          <SingelUserIteam value={"0%"} des="Tax (0%)" />
+          <SingelUserIteam value={handleSubTotal()} des="Total" />
         </div>
         <LineBrek />
         <div className="pos__pay_with">

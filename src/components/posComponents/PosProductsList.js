@@ -19,33 +19,21 @@ const PosProductsList = () => {
   const [value, setValue] = useState("All");
   const [product, setProduct] = useState([]);
   const [counter, setCounter] = useState(1);
-  // const [loading, setLoading] = useState(false);
-  // https://dummyjson.com/products/categories
-  // 'https://dummyjson.com/products/category/smartphones
+  const [fulldatas, setFulldatas] = useState([]);
+
   const fetchData = async () => {
-    // setLoading(true);
     let response = await fetch("https://dummyjson.com/products");
     let data = await response.json();
     if (response.status === 200) {
       setProduct(data.products);
     }
   };
+
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (product.length === 0) {
-    <div className="pos__product">loading...</div>;
-  }
 
-  function increment() {
-    setCounter((e) => e + 1);
-  }
-  function decrement() {
-    if (counter > 0) {
-      setCounter((e) => e - 1);
-    }
-  }
   let fullData = [];
   function handleProduct(data) {
     fullData.push(data);
@@ -58,6 +46,20 @@ const PosProductsList = () => {
       })
     );
   }
+  console.log(fullData);
+  if (product.length === 0) {
+    <div className="pos__product">loading...</div>;
+  }
+
+  function increment() {
+    setCounter((e) => e + 1);
+  }
+  function decrement() {
+    if (counter > 0) {
+      setCounter((e) => e - 1);
+    }
+  }
+
   return (
     <PosThem className="pos__product">
       <div className="product__navigation">
