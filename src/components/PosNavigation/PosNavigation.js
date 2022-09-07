@@ -12,9 +12,11 @@ import { POS_CONTROLLER_INITIAL_STATE } from "../../Store/dataSlice";
 import { Button } from "../Button";
 import { FileIcon } from "./FileIcon";
 import "../../Styles/PosStyle/PosNavigation.scss";
+import { ThisDateTime } from "./ThisDateTime";
 const PosNavigation = () => {
   const [toggleCalc, setToggleCalc] = useState(false);
   const dispatch = useDispatch();
+  let date = new Date();
   return (
     <div className="pos__navigation">
       <div className="pos__logo">
@@ -22,8 +24,9 @@ const PosNavigation = () => {
         <h2 className="pos__username">Biller 1</h2>
       </div>
       <div className="pos__date_area">
-        <div className="pos__clock">07:11:35 PM</div>
-        <div className="pos__current_date">Monday, 29 August 2022</div>
+        <ThisDateTime />
+        {/* <div className="pos__current_date">Monday, 29 August 2022</div> */}
+        <div className="pos__current_date">{date.toDateString()}</div>
       </div>
       <div className="pos__right_sidebar">
         {/* <WareHouseInput /> */}

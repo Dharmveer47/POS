@@ -27,6 +27,9 @@ const DraftCart = ({ setToggleDraft }) => {
       />
       <div className="pos__fileIcon_container">
         <PosSingelCard />
+        <PosSingelCard />
+        <PosSingelCard />
+        <PosSingelCard />
       </div>
     </PosThem>
   );

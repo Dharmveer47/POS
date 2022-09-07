@@ -19,7 +19,7 @@ const PosProductsList = () => {
   const [value, setValue] = useState("All");
   const [product, setProduct] = useState([]);
   const [counter, setCounter] = useState(1);
-  const [fulldatas, setFulldatas] = useState([]);
+  // const [fulldatas, setFulldatas] = useState([]);
 
   const fetchData = async () => {
     let response = await fetch("https://dummyjson.com/products");

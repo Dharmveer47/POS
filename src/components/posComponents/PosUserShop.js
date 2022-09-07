@@ -60,6 +60,7 @@ const PosUserShop = () => {
         <LineBrek />
         <div className="pos__pay_with">
           <SingleSelectButton
+            onClick={() => {}}
             color="#AE69F5"
             icon={<BsCash />}
             name="Pay With Cash"

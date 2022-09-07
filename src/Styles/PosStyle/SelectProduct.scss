@@ -1,6 +1,7 @@
 @use "../Variable";
 .pos__selectProduct {
   min-width: 30rem;
+  position: relative;
 }
 .pos__select_prod {
   font-size: 0.9rem;
@@ -11,6 +12,7 @@
   border: 1px solid gray;
   border-radius: 0.2rem;
   height: 2rem;
+
   .pos__name {
     @include Variable.flex(initial, center);
     font-size: 0.8rem;
@@ -23,6 +25,22 @@
     border-left: 1px solid gray;
     width: 100%;
     outline: none;
+  }
+}
+.pos__searchContainer {
+  position: absolute;
+  width: max-content;
+  left: 0;
+  width: 100%;
+  margin: auto;
+  .pos__searchText {
+    margin: 0.2rem 0;
+    padding: 0.2rem;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(226, 226, 226);
+    }
   }
 }
 .pos__select_product_table {

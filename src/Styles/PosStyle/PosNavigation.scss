@@ -121,7 +121,7 @@ $color: #ae69f5;
   height: 20rem;
   background-color: #fff;
   top: 2.5rem;
-
+  z-index: 1;
   .cal_input {
     input {
       width: 100%;
@@ -152,7 +152,8 @@ $color: #ae69f5;
 .pos__fileIcon {
   position: absolute;
   top: 3rem;
-  width: 100%;
+  width: 35rem;
+  right: 0;
 }
 .pos__fileIcon_card {
   h1 {
@@ -180,4 +181,10 @@ $color: #ae69f5;
       margin: 0.5rem;
     }
   }
+}
+.pos__fileIcon_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }

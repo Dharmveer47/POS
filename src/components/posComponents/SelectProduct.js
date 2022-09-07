@@ -1,6 +1,5 @@
 import React from "react";
 import { PosThem } from "../Thems";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { AiFillDelete } from "react-icons/ai";
 import { BsFolderFill } from "react-icons/bs";
@@ -14,6 +13,7 @@ import {
   setPosSelectedProduct,
   POS_CONTROLLER_INITIAL_STATE,
 } from "../../Store/dataSlice";
+import { SelectSearch } from "./SelectSearch";
 // import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
 
 const SelectProduct = () => {
@@ -76,13 +76,7 @@ const SelectProduct = () => {
   return (
     <PosThem className="pos__selectProduct">
       <h1 className="pos__select_prod">Select Product</h1>
-      <div className="pos__input_and_name">
-        <div className="pos__name">
-          <span>Name</span>
-          <RiArrowDropDownLine />
-        </div>
-        <input type="text" placeholder="Type any Characters and Press Enter" />
-      </div>
+      <SelectSearch />
       <div className="pos__select_product_table">
         <table>
           <thead>
@@ -171,3 +165,5 @@ export const SingleSelectButton = ({ icon, name, color, onClick }) => {
 };
 
 export default SelectProduct;
+
+
