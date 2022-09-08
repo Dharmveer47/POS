@@ -46,7 +46,7 @@ const PosProductsList = () => {
       })
     );
   }
-  console.log(fullData);
+  // console.log(fullData);
   if (product.length === 0) {
     <div className="pos__product">loading...</div>;
   }

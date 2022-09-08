@@ -7,6 +7,7 @@ export function SelectSearch() {
   const [productlist, setProduct] = useState([]);
   const [searched, setSearched] = useState([]);
   const [focused, setFocued] = useState(false);
+
   const fetchData = async () => {
     let response = await fetch("https://dummyjson.com/products");
     let data = await response.json();
@@ -33,16 +34,21 @@ export function SelectSearch() {
   const handleChaneg = (e) => {
     setSearchInput(() => {
       let inputValues = e.target.value;
-      console.log(inputValues.length);
-      if (inputValues.length > 3) {
+
+      if (inputValues.length > 1) {
         setFocued(true);
+      } else {
+        setFocued(false);
       }
-      setFocued(false);
+      // console.log(focused, inputValues.length);
       return inputValues.toLowerCase();
     });
   };
+
+  // console.log(focused);
   // console.log(focused);
   // console.log(productlist);
+
   return (
     <>
       <div className="pos__input_and_name">
@@ -62,23 +68,23 @@ export function SelectSearch() {
 }
 
 const SearchSugstion = ({ searched = [], focused }) => {
-  if (focused) {
-    return (
-      <>
-        <PosThem className="pos__searchContainer">
-          {searched.map((d) => {
-            if (!d) {
-              return false;
-            }
-            return (
-              <p className="pos__searchText" id="d.id">
-                {d.title}
-              </p>
-            );
-          })}
-        </PosThem>
-      </>
-    );
+  if (!focused) {
+    return <div></div>;
   }
-  return <></>;
+  return (
+    <>
+      <PosThem className="pos__searchContainer">
+        {searched.map((d) => {
+          if (!d) {
+            return false;
+          }
+          return (
+            <p className="pos__searchText" id="d.id">
+              {d.title}
+            </p>
+          );
+        })}
+      </PosThem>
+    </>
+  );
 };
