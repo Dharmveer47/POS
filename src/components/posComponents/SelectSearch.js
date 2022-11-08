@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { PosThem } from "../Thems";
 
@@ -8,6 +9,11 @@ export function SelectSearch() {
   const [searched, setSearched] = useState([]);
   const [focused, setFocued] = useState(false);
 
+  // const [allProduct, setAlldata] = useState([]);
+
+  // const [filtered, setFiltered] = useState([]);
+  const prodcuts = useSelector((state) => state.POS.POS_PRODUCTS);
+
   const fetchData = async () => {
     let response = await fetch("https://dummyjson.com/products");
     let data = await response.json();
@@ -15,11 +21,18 @@ export function SelectSearch() {
       setProduct(data.products);
     }
   };
+  function handleDublicate(data1, data2) {
+    // console.log(data1, data2);
+    // let fulldatas = data1.concat(data2);
+    let difference = data1.filter((x) => !data2.includes(x));
+    console.log(difference);
+  }
 
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   // for product searching
   useEffect(() => {
     let searchdata = productlist.map((d) => {
@@ -29,7 +42,14 @@ export function SelectSearch() {
       return false;
     });
     setSearched(searchdata);
-  }, [productlist, searchInput]);
+    // Search all Products
+    // let allData = [...prodcuts, ...productlist];
+    handleDublicate(prodcuts, productlist);
+
+    // console.log(filteredData);
+  }, [prodcuts, productlist, searchInput]);
+
+  // for filter searching
 
   const handleChaneg = (e) => {
     setSearchInput(() => {
@@ -47,7 +67,7 @@ export function SelectSearch() {
 
   // console.log(focused);
   // console.log(focused);
-  // console.log(productlist);
+  // console.log(allProduct);
 
   return (
     <>

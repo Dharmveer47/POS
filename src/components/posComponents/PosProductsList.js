@@ -7,6 +7,7 @@ import "../../Styles/PosStyle/PosProduct.scss";
 
 // Redux
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   setPosProduct,
   POS_CONTROLLER_INITIAL_STATE,
@@ -15,8 +16,10 @@ import {
 const PosProductsList = () => {
   const dispatch = useDispatch();
   const Filter = ["skincare", "fragrances", "furniture", "groceries"];
+  const prodcuts = useSelector((state) => state.POS.POS_PRODUCTS);
   // const counterRedux = useSelector((state) => state.POS.POS_PRODUCTS_INC);
   const [value, setValue] = useState("All");
+
   const [product, setProduct] = useState([]);
   const [counter, setCounter] = useState(1);
   // const [fulldatas, setFulldatas] = useState([]);
@@ -34,19 +37,31 @@ const PosProductsList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  let fullData = [];
-  function handleProduct(data) {
-    fullData.push(data);
-    let filterData = fullData.filter((d, index) => {
-      return fullData.indexOf(d) === index;
-    });
-    dispatch(
+  // let fullData = [];
+
+  function setAlldata(d) {
+    return dispatch(
       setPosProduct({
-        [POS_CONTROLLER_INITIAL_STATE.POS_PRODUCTS]: filterData,
+        [POS_CONTROLLER_INITIAL_STATE.POS_PRODUCTS]: [...prodcuts, d],
       })
     );
   }
-  // console.log(fullData);
+  function setFilterData(data) {
+    return data.filter((d, index) => {
+      return data.indexOf(d) === index;
+    });
+  }
+
+  function handleProduct(data) {
+    let stored = setAlldata(data);
+    let filteredData = setFilterData(stored.payload?.POS_PRODUCTS);
+    return dispatch(
+      setPosProduct({
+        [POS_CONTROLLER_INITIAL_STATE.POS_PRODUCTS]: filteredData,
+      })
+    );
+  }
+  // console.log(prodcuts);
   if (product.length === 0) {
     <div className="pos__product">loading...</div>;
   }
